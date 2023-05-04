@@ -2,18 +2,7 @@ import { useState } from "react";
 import { Table, Button, Form } from "antd";
 import { useData } from "../utils/data";
 import PeopleModal from "../components/PeopleModal";
-
-type Data = {
-  id: number;
-  name: string;
-  email: string;
-  gender: string;
-  address: {
-    street: string;
-    city: string;
-  };
-  phone: string;
-};
+import { Data } from "../types/dataTypes";
 
 const PeopleTable = () => {
   const [form] = Form.useForm();
@@ -126,5 +115,4 @@ const PeopleTable = () => {
 };
 
 export default PeopleTable;
-// refactor: move modal to separate component
 // create types folder and dataTypes.ts
