@@ -1,6 +1,7 @@
 import React from "react";
 import { Pie } from "@ant-design/charts";
-import { useData } from "../utils/data";
+import { useData } from "../../utils/data";
+import "./PieChart.css";
 
 const PieChart: React.FC = () => {
   const { data } = useData();
@@ -25,10 +26,10 @@ const PieChart: React.FC = () => {
     data: pieData,
     angleField: "value",
     colorField: "type",
-    radius: 0.9,
+    radius: 1,
     label: {
       type: "inner",
-      offset: "-30%",
+      offset: "-40%",
       content: "{value} ({percentage})",
       style: {
         fontSize: 19,
@@ -38,7 +39,11 @@ const PieChart: React.FC = () => {
     interactions: [{ type: "element-active" }],
   };
 
-  return <Pie {...config} />;
+  return (
+    <div className="pie_chart">
+      <Pie {...config} />
+    </div>
+  );
 };
 
 export default PieChart;
