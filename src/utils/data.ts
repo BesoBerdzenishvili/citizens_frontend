@@ -1,17 +1,7 @@
 import axios from "axios";
+import { useEffect } from "react";
 import create from "zustand";
-
-type Data = {
-  id: number;
-  name: string;
-  email: string;
-  gender: string;
-  address: {
-    street: string;
-    city: string;
-  };
-  phone: string;
-};
+import { Data } from "../types/dataTypes";
 
 type Store = {
   data: Data[];
@@ -36,6 +26,10 @@ export const useData = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const fetchDataById = async (id: number) => {
     try {
