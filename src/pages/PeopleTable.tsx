@@ -115,4 +115,3 @@ const PeopleTable = () => {
 };
 
 export default PeopleTable;
-// create types folder and dataTypes.ts
