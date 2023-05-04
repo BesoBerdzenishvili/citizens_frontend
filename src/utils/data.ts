@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect } from "react";
 import create from "zustand";
 
 type Data = {
@@ -36,6 +37,10 @@ export const useData = () => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const fetchDataById = async (id: number) => {
     try {
