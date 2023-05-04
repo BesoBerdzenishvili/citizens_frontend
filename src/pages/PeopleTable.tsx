@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Table, Button, Modal, Form, Input, Select } from "antd";
+import { Table, Button, Form } from "antd";
 import { useData } from "../utils/data";
-
-const { Option } = Select;
+import PeopleModal from "../components/PeopleModal";
 
 type Data = {
   id: number;
@@ -115,70 +114,17 @@ const PeopleTable = () => {
         })}
         rowKey="id"
       />
-      <Modal
-        title={editingId ? "Edit Data" : "Add Data"}
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        forceRender
-      >
-        <Form form={form} layout="vertical">
-          <Form.Item
-            label="Name"
-            name="name"
-            rules={[{ required: true, message: "Please enter a name" }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[
-              {
-                required: true,
-                message: "Please enter an email",
-                type: "email",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Gender"
-            name="gender"
-            rules={[{ required: true, message: "Please select a gender" }]}
-          >
-            <Select>
-              <Option value="male">Male</Option>
-              <Option value="female">Female</Option>
-              <Option value="other">Other</Option>
-            </Select>
-          </Form.Item>
-          <Form.Item
-            label="Street"
-            name={["address", "street"]}
-            rules={[{ required: true, message: "Please enter a street" }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="City"
-            name={["address", "city"]}
-            rules={[{ required: true, message: "Please enter a city" }]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            label="Phone"
-            name="phone"
-            rules={[{ required: true, message: "Please enter a phone number" }]}
-          >
-            <Input />
-          </Form.Item>
-        </Form>
-      </Modal>
+      <PeopleModal
+        isModalVisible={isModalVisible}
+        editingId={editingId}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+        form={form}
+      />
     </>
   );
 };
 
 export default PeopleTable;
+// refactor: move modal to separate component
+// create types folder and dataTypes.ts
